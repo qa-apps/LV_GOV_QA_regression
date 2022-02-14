@@ -44,4 +44,21 @@ class TestSmoke:
         
         assert page.locator('a:has-text("Visi pakalpojumi")').first.is_visible()
         assert page.locator('a:has-text("Visas dzīves situācijas")').first.is_visible()
+    
+    @pytest.mark.smoke
+    def test_cookie_banner_functionality(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        cookie_accept = page.locator('button:has-text("Piekrist visam")')
+        if cookie_accept.first.is_visible():
+            cookie_accept.first.click()
+    
+    @pytest.mark.smoke
+    def test_footer_links_present(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        assert page.locator('a:has-text("Kontakti un saziņa")').first.is_visible()
+        assert page.locator('a:has-text("Par portālu")').first.is_visible()
 
