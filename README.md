@@ -1,6 +1,6 @@
-# LV Government QA Automation
+# LV Gov QA Automation
 
-Playwright + Python test automation framework for Latvian government portal testing.
+Playwright + Python test automation framework for Latvian gov portal testing.
 
 ## Setup
 
