@@ -35,4 +35,20 @@ class TestNavigation:
         
         page.locator('button:has-text("E-adrese")').first.click()
         page.wait_for_timeout(500)
+    
+    @pytest.mark.regression
+    def test_about_portal_menu_opens(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        page.locator('button:has-text("Par portālu")').first.click()
+        page.wait_for_timeout(500)
+    
+    @pytest.mark.regression
+    def test_logo_redirects_to_home(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        logo = page.locator('a[aria-label="Sākumlapa"]').first
+        assert logo.is_visible()
 
