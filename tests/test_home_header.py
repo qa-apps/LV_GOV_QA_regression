@@ -60,3 +60,38 @@ def _meta_commit_3():
 
 def _meta_commit_13():
     return 13
+
+@pytest.mark.ui
+def test_auto_3_a(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.logo).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_3_b(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.search_input).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_3_c(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.login_link).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_3_d(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.services_menu).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_3_e(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.all_services_link).first).to_be_visible()
