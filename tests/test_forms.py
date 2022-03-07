@@ -20,4 +20,21 @@ class TestForms:
         search_input = page.locator('input[placeholder*="Meklēt"]').first
         placeholder = search_input.get_attribute('placeholder')
         assert placeholder is not None
+    
+    @pytest.mark.regression
+    def test_search_input_accepts_text(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        search_input = page.locator('input[aria-label*="Meklēšanas ievadlauks"]').first
+        search_input.fill("test data")
+        assert search_input.input_value() == "test data"
+    
+    @pytest.mark.regression
+    def test_form_validation(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        search_input = page.locator('input[aria-label*="Meklēšanas ievadlauks"]').first
+        assert search_input.is_editable()
 
