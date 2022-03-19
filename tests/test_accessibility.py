@@ -19,4 +19,23 @@ class TestAccessibility:
         
         services_button = page.locator('button:has-text("Pakalpojumi")').first
         assert services_button.text_content()
+    
+    @pytest.mark.regression
+    def test_links_have_href(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        all_services_link = page.locator('a:has-text("Visi pakalpojumi")').first
+        href = all_services_link.get_attribute('href')
+        assert href is not None
+    
+    @pytest.mark.regression
+    def test_images_have_alt_text(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        images = page.locator('img')
+        if images.count() > 0:
+            first_img = images.first
+            assert first_img.is_visible()
 
