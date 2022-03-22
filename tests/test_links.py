@@ -20,4 +20,21 @@ class TestLinks:
         
         services_link = page.locator('a:has-text("Visi pakalpojumi")').first
         assert services_link.is_enabled()
+    
+    @pytest.mark.regression
+    def test_all_links_have_text(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        services_link = page.locator('a:has-text("Visi pakalpojumi")').first
+        assert services_link.text_content()
+    
+    @pytest.mark.regression
+    def test_footer_links_valid(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        contacts_link = page.locator('a:has-text("Kontakti un saziņa")').first
+        href = contacts_link.get_attribute('href')
+        assert href is not None
 
