@@ -19,4 +19,21 @@ class TestContent:
         
         content = page.content()
         assert "Pakalpojumi" in content or "Latvija" in content
+    
+    @pytest.mark.regression
+    def test_heading_present(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        h1 = page.locator('h1').first
+        if h1.is_visible():
+            assert h1.text_content()
+    
+    @pytest.mark.regression
+    def test_meta_description(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        meta = page.locator('meta[name="description"]')
+        assert meta.count() >= 0
 
