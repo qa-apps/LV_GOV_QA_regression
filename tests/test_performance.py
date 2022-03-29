@@ -18,4 +18,20 @@ class TestPerformance:
         page.wait_for_load_state("networkidle")
         
         assert home_page.is_logo_visible()
+    
+    @pytest.mark.regression
+    def test_dom_content_loaded(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        page.wait_for_load_state("domcontentloaded")
+        
+        assert page.title()
+    
+    @pytest.mark.regression
+    def test_page_is_interactive(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        search_input = page.locator('input[aria-label*="Meklēšanas ievadlauks"]').first
+        assert search_input.is_editable()
 
