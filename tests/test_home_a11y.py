@@ -54,3 +54,6 @@ class TestHomeAccessibility:
     def test_main_navigation_region(self, page: Page, base_url: str):
         HomePage(page).open(base_url)
         expect(page.get_by_role('navigation')).to_be_visible()
+
+def _meta_commit_1():
+    return 1
