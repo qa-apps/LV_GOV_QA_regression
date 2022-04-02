@@ -60,3 +60,6 @@ class TestHomeCookieAndPrivacy:
     def test_feedback_link_visible(self, page: Page, base_url: str):
         HomePage(page).open(base_url).accept_cookies()
         expect(page.locator('a:has-text("Atsauksme par Latvija.gov.lv")').first).to_be_visible()
+
+def _meta_commit_2():
+    return 2
