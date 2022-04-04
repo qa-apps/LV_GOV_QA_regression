@@ -54,3 +54,6 @@ class TestHomeHeaderElements:
     def test_all_services_link_visible(self, page: Page, base_url: str):
         home = HomePage(page).open(base_url).accept_cookies()
         expect(page.locator(home.all_services_link).first).to_be_visible()
+
+def _meta_commit_3():
+    return 3
