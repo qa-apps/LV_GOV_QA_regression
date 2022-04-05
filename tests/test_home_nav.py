@@ -56,3 +56,6 @@ class TestHomeNavigationMenus:
         home = HomePage(page).open(base_url).accept_cookies()
         expect(page.locator(home.language_switcher).first).to_be_visible()
         expect(page.locator(home.language_switcher).first).to_be_enabled()
+
+def _meta_commit_4():
+    return 4
