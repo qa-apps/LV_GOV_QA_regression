@@ -54,3 +54,6 @@ class TestHomeSectionCards:
     def test_all_life_situations_link_visible(self, page: Page, base_url: str):
         HomePage(page).open(base_url).accept_cookies()
         expect(page.locator('a:has-text("Visas dzīves situācijas")').first).to_be_visible()
+
+def _meta_commit_5():
+    return 5
