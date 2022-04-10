@@ -56,3 +56,6 @@ class TestHomeSearchBehaviors:
         HomePage(page).open(base_url)
         t = page.locator('input[aria-label*="Meklēšanas"]').first.get_attribute('type')
         assert t in (None, 'text', 'search')
+
+def _meta_commit_6():
+    return 6
