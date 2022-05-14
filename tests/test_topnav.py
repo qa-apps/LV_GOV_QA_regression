@@ -57,3 +57,38 @@ class TestHomeTopNav:
 
 def _meta_commit_8():
     return 8
+
+@pytest.mark.ui
+def test_auto_8_a(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.logo).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_8_b(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.search_input).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_8_c(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.login_link).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_8_d(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.services_menu).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_8_e(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.all_services_link).first).to_be_visible()
