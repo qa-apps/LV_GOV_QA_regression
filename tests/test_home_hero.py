@@ -43,3 +43,6 @@ class TestHomeHeroContent:
     def test_any_paragraph_exists(self, page: Page, base_url: str):
         HomePage(page).open(base_url)
         assert page.locator('p').count() >= 0
+
+def _meta_commit_7():
+    return 7
