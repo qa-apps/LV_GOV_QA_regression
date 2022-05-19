@@ -54,3 +54,6 @@ class TestHomeTopNav:
     def test_nav_all_services_link(self, page: Page, base_url: str):
         HomePage(page).open(base_url)
         expect(page.get_by_role('link', name='Visi pakalpojumi')).to_be_visible()
+
+def _meta_commit_8():
+    return 8
