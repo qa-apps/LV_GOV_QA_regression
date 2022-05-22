@@ -42,3 +42,6 @@ class TestHomeRegions:
         HomePage(page).open(base_url)
         count = page.get_by_role('navigation', name=lambda n: 'drupatas' in n.lower() or 'bread' in n.lower()).count()
         assert count >= 0
+
+def _meta_commit_9():
+    return 9
