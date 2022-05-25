@@ -57,3 +57,6 @@ class TestHomeLoginAndAuthLinks:
         HomePage(page).open(base_url)
         page.locator('a:has-text("Ienākt Mana Latvija.lv")').first.click(timeout=3000)
         assert True
+
+def _meta_commit_10():
+    return 10
