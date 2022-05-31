@@ -63,3 +63,6 @@ class TestHomeCookieAndPrivacy:
 
 def _meta_commit_2():
     return 2
+
+def _meta_commit_12():
+    return 12
