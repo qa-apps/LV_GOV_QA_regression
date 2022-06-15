@@ -51,4 +51,20 @@ class TestNavigation:
         
         logo = page.locator('a[aria-label="Sākumlapa"]').first
         assert logo.is_visible()
+    
+    @pytest.mark.regression
+    def test_all_navigation_buttons_visible(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        buttons = page.locator('button')
+        assert buttons.count() > 0
+    
+    @pytest.mark.regression
+    def test_navigation_menu_structure(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        nav = page.locator('nav').first
+        assert nav.is_visible()
 
