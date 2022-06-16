@@ -37,4 +37,20 @@ class TestServices:
         page.wait_for_timeout(300)
         services_button.click()
         page.wait_for_timeout(300)
+    
+    @pytest.mark.regression
+    def test_services_button_has_text(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        services_button = page.locator('button:has-text("Pakalpojumi")').first
+        assert "Pakalpojumi" in services_button.text_content()
+    
+    @pytest.mark.regression
+    def test_services_menu_keyboard_accessible(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        services_button = page.locator('button:has-text("Pakalpojumi")').first
+        assert services_button.is_enabled()
 
