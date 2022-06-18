@@ -38,4 +38,21 @@ class TestAccessibility:
         if images.count() > 0:
             first_img = images.first
             assert first_img.is_visible()
+    
+    @pytest.mark.regression
+    def test_focus_indicators_present(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        services_button = page.locator('button:has-text("Pakalpojumi")').first
+        services_button.focus()
+        assert services_button.is_visible()
+    
+    @pytest.mark.regression
+    def test_skip_to_content_link(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        main_content = page.locator('main').first
+        assert main_content.is_visible()
 
