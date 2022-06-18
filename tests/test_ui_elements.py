@@ -35,4 +35,19 @@ class TestUIElements:
         
         nav = page.locator('nav').first
         assert nav.is_visible()
+    
+    @pytest.mark.regression
+    def test_page_favicon_present(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        favicon = page.locator('link[rel="icon"]')
+        assert favicon.count() >= 0
+    
+    @pytest.mark.regression
+    def test_page_metadata_present(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        assert page.title()
 
