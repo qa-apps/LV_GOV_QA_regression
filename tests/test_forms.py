@@ -37,4 +37,21 @@ class TestForms:
         
         search_input = page.locator('input[aria-label*="Meklēšanas ievadlauks"]').first
         assert search_input.is_editable()
+    
+    @pytest.mark.regression
+    def test_form_submit_button(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        search_button = page.locator('button:has-text("Meklēt rezultātus")').first
+        assert search_button.is_visible()
+    
+    @pytest.mark.regression
+    def test_input_field_focus(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        search_input = page.locator('input[aria-label*="Meklēšanas ievadlauks"]').first
+        search_input.focus()
+        assert search_input.is_visible()
 
