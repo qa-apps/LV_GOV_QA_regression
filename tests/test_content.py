@@ -36,4 +36,22 @@ class TestContent:
         
         meta = page.locator('meta[name="description"]')
         assert meta.count() >= 0
+    
+    @pytest.mark.regression
+    def test_page_structure_valid(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        header = page.locator('header').first
+        main = page.locator('main').first
+        footer = page.locator('footer').first
+        assert header.is_visible() or main.is_visible() or footer.is_visible()
+    
+    @pytest.mark.regression
+    def test_text_encoding_correct(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        content = page.content()
+        assert "Pakalpojumi" in content or "Ko darīt" in content
 
