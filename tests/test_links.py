@@ -37,4 +37,21 @@ class TestLinks:
         contacts_link = page.locator('a:has-text("Kontakti un saziņa")').first
         href = contacts_link.get_attribute('href')
         assert href is not None
+    
+    @pytest.mark.regression
+    def test_navigation_links_work(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        logo_link = page.locator('a[aria-label="Sākumlapa"]').first
+        assert logo_link.is_visible()
+    
+    @pytest.mark.regression
+    def test_links_are_understandable(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        services_link = page.locator('a:has-text("Visi pakalpojumi")').first
+        text = services_link.text_content()
+        assert len(text) > 0
 
