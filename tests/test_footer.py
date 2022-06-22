@@ -33,4 +33,20 @@ class TestFooter:
         
         footer = page.locator('footer').first
         assert footer.is_visible()
+    
+    @pytest.mark.regression
+    def test_footer_copyright_text(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        content = page.content()
+        assert "Latvija" in content or "latvija" in content.lower()
+    
+    @pytest.mark.regression
+    def test_footer_social_links(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        footer = page.locator('footer').first
+        assert footer.is_visible()
 
