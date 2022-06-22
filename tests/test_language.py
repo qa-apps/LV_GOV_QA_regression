@@ -36,4 +36,20 @@ class TestLanguage:
         
         page_content = page.content()
         assert "LV" in page_content or "Latvian" in page_content.lower()
+    
+    @pytest.mark.regression
+    def test_language_menu_accessible(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        lang_switcher = page.locator('a[aria-label="Pārslēgties uz angļu valodu"]').first
+        assert lang_switcher.is_enabled()
+    
+    @pytest.mark.regression
+    def test_multiple_languages_available(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        lang_switcher = page.locator('a[aria-label="Pārslēgties uz angļu valodu"]').first
+        assert lang_switcher.is_visible()
 
