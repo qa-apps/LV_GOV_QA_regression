@@ -37,4 +37,22 @@ class TestLifeSituations:
         page.wait_for_timeout(300)
         situations_button.click()
         page.wait_for_timeout(300)
+    
+    @pytest.mark.regression
+    def test_life_situations_button_text(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        button = page.locator('button:has-text("Ko darīt, ja...?")').first
+        text = button.text_content()
+        assert "Ko darīt" in text
+    
+    @pytest.mark.regression
+    def test_life_situations_link_href(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        link = page.locator('a:has-text("Visas dzīves situācijas")').first
+        href = link.get_attribute('href')
+        assert href is not None
 
