@@ -37,4 +37,21 @@ class TestLogin:
         
         login_link = page.locator('a:has-text("Ienākt Mana Latvija.lv")').first
         assert login_link.is_enabled()
+    
+    @pytest.mark.regression
+    def test_login_link_accessible(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        login_link = page.locator('a:has-text("Ienākt Mana Latvija.lv")').first
+        login_link.focus()
+        assert login_link.is_visible()
+    
+    @pytest.mark.regression
+    def test_login_area_visible(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        login_link = page.locator('a:has-text("Ienākt Mana Latvija.lv")').first
+        assert login_link.is_visible()
 
