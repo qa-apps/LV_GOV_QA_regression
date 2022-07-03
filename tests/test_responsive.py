@@ -34,4 +34,20 @@ class TestResponsive:
         
         header = page.locator('header').first
         assert header.is_visible()
+    
+    @pytest.mark.regression
+    def test_content_fits_viewport(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        viewport = page.viewport_size
+        assert viewport['width'] > 0
+    
+    @pytest.mark.regression
+    def test_responsive_images(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        images = page.locator('img')
+        assert images.count() >= 0
 

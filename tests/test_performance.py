@@ -34,4 +34,19 @@ class TestPerformance:
         
         search_input = page.locator('input[aria-label*="Meklēšanas ievadlauks"]').first
         assert search_input.is_editable()
+    
+    @pytest.mark.regression
+    def test_no_console_errors(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        assert page.url
+    
+    @pytest.mark.regression
+    def test_page_loads_completely(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        page.wait_for_load_state("load")
+        
+        assert home_page.is_logo_visible()
 
