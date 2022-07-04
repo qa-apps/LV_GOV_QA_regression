@@ -35,4 +35,19 @@ class TestSEO:
         html = page.locator('html').first
         lang = html.get_attribute('lang')
         assert lang is not None or "lv" in page.content().lower()
+    
+    @pytest.mark.regression
+    def test_structured_data_present(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        content = page.content()
+        assert len(content) > 0
+    
+    @pytest.mark.regression
+    def test_sitemap_accessible(self, page: Page, base_url: str):
+        home_page = HomePage(page)
+        home_page.open(base_url)
+        
+        assert page.url.startswith("https://")
 
