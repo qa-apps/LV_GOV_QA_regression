@@ -95,3 +95,38 @@ def test_auto_5_e(page: Page, base_url: str):
     hp.open(base_url)
     hp.accept_cookies()
     expect(page.locator(hp.all_services_link).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_15_a(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.logo).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_15_b(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.search_input).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_15_c(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.login_link).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_15_d(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.services_menu).first).to_be_visible()
+
+@pytest.mark.ui
+def test_auto_15_e(page: Page, base_url: str):
+    hp = HomePage(page)
+    hp.open(base_url)
+    hp.accept_cookies()
+    expect(page.locator(hp.all_services_link).first).to_be_visible()
